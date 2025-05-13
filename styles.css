@@ -1,0 +1,348 @@
+:root {
+    --header-bg: #eaeaea;
+    --lightgray: #f5f5f5;
+    --gray: #ededed;
+    --darkgray: #cccccc;
+    --text: #222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--lightgray);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: var(--header-bg);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 72px;
+    max-height: 16vw;
+    min-height: 44px;
+    width: auto;
+    transition: height 0.2s, transform 0.3s;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.logo:hover img {
+    transform: scale(1.08);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.2s;
+}
+
+/* Default underline color (for Home) */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--darkgray);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out, background 0.2s;
+}
+
+/* About link hover */
+nav a[href="about.html"]:hover {
+    color: #8E3F23;
+}
+nav a[href="about.html"]:hover::after {
+    background: #8E3F23;
+}
+
+/* Projects link hover */
+nav a[href="projects.html"]:hover {
+    color: #C9E265;
+}
+nav a[href="projects.html"]:hover::after {
+    background: #C9E265;
+}
+
+/* Gallery (Contact) link hover */
+nav a[href="contact.html"]:hover {
+    color: #03989E;
+}
+nav a[href="contact.html"]:hover::after {
+    background: #03989E;
+}
+
+/* Home link: no color change on hover */
+nav a[href="index.html"]:hover {
+    color: var(--text);
+}
+nav a[href="index.html"]:hover::after {
+    background: var(--darkgray);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+section {
+    padding: 2rem 0;
+}
+
+h1, h2 {
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+}
+
+#home {
+    background: var(--gray);
+    color: var(--text);
+    text-align: center;
+}
+
+#home h1 {
+    color: var(--text);
+}
+
+#about {
+    background: var(--lightgray);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.project-item {
+    background: white;
+    padding: 1rem;
+    border: 1px solid var(--darkgray);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(180, 180, 180, 0.1);
+    transition: transform 0.3s ease;
+}
+
+gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+#contact {
+    background: var(--lightgray);
+    color: var(--text);
+}
+
+#contact h2 {
+    color: var(--text);
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    background: var(--gray);
+    color: var(--text);
+    text-align: center;
+}
+
+.footer-logo {
+    height: 5.5em;
+    vertical-align: middle;
+    margin-bottom: 0.2em;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--darkgray);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--gray);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form textarea, form button {
+    padding: 0.5rem;
+    border: 1px solid var(--darkgray);
+    border-radius: 5px;
+}
+
+form button {
+    background: var(--darkgray);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--gray);
+}
+
+/* Mobile (default) */
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo img {
+        height: 110px;
+        max-height: 10vw;
+        min-height: 60px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    header .container {
+        flex-direction: row;
+    }
+
+    nav ul {
+        gap: 2rem;
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Smaller notebooks and regular monitors */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .logo img {
+        height: 140px;
+        max-height: 7vw;
+        min-height: 80px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+/* 4K monitors */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 1800px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+
+    .logo img {
+        height: 180px;
+        max-height: 6vw;
+        min-height: 100px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+    }
+
+    .project-item {
+        padding: 1.5rem;
+    }
+}
